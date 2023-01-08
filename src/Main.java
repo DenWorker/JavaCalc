@@ -47,6 +47,8 @@ public class Main {
             Flag = true;
             strings[0] = Rome.toArab(strings[0]);
             strings[1] = Rome.toArab(strings[1]);
+        } else if (Integer.parseInt(strings[0]) > 10 || Integer.parseInt(strings[1]) > 10 || Integer.parseInt(strings[0]) < 1 || Integer.parseInt(strings[1]) < 1) {
+            throw new Exception();
         }
 
         // Расчёт результата.
@@ -98,7 +100,7 @@ enum Rome {
         return "-1";
     }
 
-    public static String toRome(String input) {
+    public static String toRome(String input) throws Exception {
         int dozens = Integer.parseInt(input) / 10 * 10;
         int units = Integer.parseInt(input) % 10;
         input = "";
@@ -113,6 +115,9 @@ enum Rome {
                 input += element.name();
                 break;
             }
+        }
+        if (input == "") {
+            throw new Exception();
         }
         return input;
     }
